@@ -89,7 +89,7 @@ class ForgotPasswordView(APIView):
 
 class ChangePasswordView(APIView):
     def post(self,request):
-        serializer=ChangePasswordSerializer(data=request.data=request)
+        serializer=ChangePasswordSerializer(data=request.data)
         if serializer.is_valid():
             email=serializer.validated_data['email']
             otp=serializer.validated_data['otp']
