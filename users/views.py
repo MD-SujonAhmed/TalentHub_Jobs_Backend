@@ -84,7 +84,7 @@ class ForgotPasswordView(APIView):
                 return Response({'message':'OTP sent to terminal'})
             except User.DoesNotExist:
                 return Response({'error':'User not found'},status=404)
-        return Response(serializer.errors,status=400)
+        return Response(serializer.errors,status=404)
             
 
 class ChangePasswordView(APIView):
