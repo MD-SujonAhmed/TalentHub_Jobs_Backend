@@ -23,6 +23,8 @@ class Job(models.Model):
     deadline=models.DateField(null=True,blank=True)
     company=models.ForeignKey(Company,on_delete=models.CASCADE,related_name='company')
     job_type=models.ForeignKey(JobType,on_delete=models.CASCADE)
+    salary=models.CharField(max_length=10,blank=True,null=True)
+    Vacancy=models.CharField(max_length=10,blank=True,null=True)
     
     
 class Category(models.Model):
@@ -38,3 +40,4 @@ class ExperienceLevel(models.Model):
     ExperienceLevel=models.CharField(max_length=20,choices=ExperienceLevel_name,default='Fresher')
 class Skill(models.Model):
     name=models.CharField(max_length=100)
+    job=models.ForeignKey(Job,on_delete=models.CASCADE,related_name='skill')
