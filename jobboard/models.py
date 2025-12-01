@@ -4,7 +4,7 @@ from django.db import models
 class Company(models.Model):
     company_name=models.CharField(max_length=20)
     location=models.CharField(max_length=100,blank=True,null=True)
-    description=models.CharField(blank=True,null=True)
+    description=models.CharField(max_length=10,blank=True,null=True)
 
 class JobType(models.Model):
     job_type=[
@@ -12,6 +12,7 @@ class JobType(models.Model):
         ('onsite','onsite'),
         ('hybrid','hybrid'),
     ]
+    job_type=models.CharField(max_length=10,choices=job_type,default='job-type')
 class Job(models.Model):
     title=models.CharField(max_length=50)
     description=models.CharField(blank=True,null=True)

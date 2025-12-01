@@ -22,7 +22,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'users',
-    ' jobboard',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'jobboard'
     
 ]
 
