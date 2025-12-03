@@ -30,8 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
-    'jobboard'
-    
+    'jobboard',
+    'JobApplication',
+    'django_filters'    
 ]
 
 MIDDLEWARE = [
@@ -115,6 +116,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# ----------------------------------This is Media File------------------------------------------
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # auth_User
 AUTH_USER_MODEL = 'users.User'
