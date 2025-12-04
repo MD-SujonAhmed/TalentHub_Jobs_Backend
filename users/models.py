@@ -29,14 +29,15 @@ class CustomUserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     ROLE_CHOICES = (
-        ('user', 'User'),
-        ('admin', 'Admin'),
+    ('candidate', 'Candidate'),
+    ('recruiter', 'Recruiter'),
+    ('admin', 'Admin'),
     )
 
     email = models.EmailField(unique=True)
     name = models.CharField(max_length=20)
     phone = models.CharField(max_length=11, blank=True, null=True)
-    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='candidate')
     otp = models.CharField(max_length=6, blank=True, null=True)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
