@@ -13,15 +13,20 @@ class jobTypeSerializer(serializers.ModelSerializer):
         fields="__all__"
         
 class JobSerializer(serializers.ModelSerializer):
-     class Meta:
+    application_count=serializers.SerializerMethodField() # this is model new feild add korsa 
+    class Meta:
          model=Job
          fields="__all__"
+    def get_application_count(self,obj):
+        return obj.applications.count()
+
          
 class CategorySerializer(serializers.ModelSerializer):
     
     class Meta:
         model=Category
         fields="__all__"
+
 class ExperienceLevelSerializer(serializers.ModelSerializer):
     
     class Meta:

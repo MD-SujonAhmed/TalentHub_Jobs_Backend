@@ -1,10 +1,12 @@
 from django.db import models
+from JobApplication.models import JobApplication 
 
 # Create your models here.
 class Company(models.Model):
     company_name=models.CharField(max_length=20)
     location=models.CharField(max_length=100,blank=True,null=True)
     description=models.CharField(max_length=10,blank=True,null=True)
+    
 
 class JobType(models.Model):
     job_type=[
@@ -22,10 +24,11 @@ class Job(models.Model):
     ]
     Workplace=models.CharField(max_length=10,choices=Workplace_choices,default='office')
     deadline=models.DateField(null=True,blank=True)
-    company=models.ForeignKey(Company,on_delete=models.CASCADE,related_name='company')
+    companies=models.ManyToManyField(Company,related_name='companies')
     job_type=models.ForeignKey(JobType,on_delete=models.CASCADE)
     salary=models.CharField(max_length=10,blank=True,null=True)
     Vacancy=models.CharField(max_length=10,blank=True,null=True)
+    applications_user=models.ForeignKey(JobApplication,on_delete=models.CASCADE,related_name='application_users')
     
     
 class Category(models.Model):

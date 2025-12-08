@@ -21,24 +21,38 @@ class RegisterView(APIView):
         serializer=RegisterSerializer(user,many=True)
         return Response(serializer.data)
 
+# class VerifyOtpView(APIView):
+#     def post(self,request):
+#      serializer=VerifyOtpSerializer(data=request.data)
+#      if serializer.is_valid():
+#         email=serializer.validated_data['email']
+#         otp=serializer.validated_data['otp']
+#         try:
+#             user=User.objects.get(email=email)
+#             if user.otp==otp:
+#                 user.is_active=True
+#                 user.save()
+#                 return Response({'message':'OTP verified successfully'})
+#             return Response({'error','invalid OTP'},status=400)
+#         except User.DoesNotExist:
+#             return Response({'error':'User not found'},status=404)
+#      return Response(serializer.errors,status=404)
 class VerifyOtpView(APIView):
     def post(self,request):
-     serializer=VerifyOtpSerializer(data=request.data)
-     if serializer.is_valid():
-        email=serializer.validated_data['email']
-        otp=serializer.validated_data['otp']
-        try:
-            user=User.objects.get(email=email)
-            if user.otp==otp:
-                user.is_active=True
-                user.save()
-                return Response({'message':'OTP verified successfully'})
-            return Response({'error','invalid OTP'},status=400)
-        except User.DoesNotExist:
-            return Response({'error':'User not found'},status=404)
-     return Response(serializer.errors,status=404)
+        serializer=VerifyOtpSerializer(data=request.data)
+        if serializer.is_valid():
+            email=serializer.validated_data['email']
+            otp=serializer.validated_data['otp']
+            try:
+                user=User.objects.get(email=email)
+                if user.otp==otp:
+                    user.is_active=True
+                    user.save()
+                    return Response({'error','invalid OTP'},status=400)
+            except User.DoesNotExist:
+                return Response({'error':'User not found'},status=404)
 
-
+                                                
 class ResendOtpView(APIView):
     def post(self,request):
         serializer=ResendOtpSerializer(data=request.data)

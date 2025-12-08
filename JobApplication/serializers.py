@@ -10,7 +10,7 @@ class JobSerializer(serializers.ModelSerializer):
 class JobApplicationSerializer(serializers.ModelSerializer):
     
     job=JobSerializer(read_only=True)
-    job_id=serializers.PrimaryKeyRelatedField(
+    job_id=serializers.PrimaryKeyRelatedField( # agula Serilizerzers  add filed kora 
         queryset=Job.objects.all(),
         source='job',
         write_only=True
