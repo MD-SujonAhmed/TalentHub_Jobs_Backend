@@ -14,4 +14,4 @@ class JobApplicationViewset(ModelViewSet):
     filter_fields=['company','job_type','location']
     search_fields=['title','ExperienceLevel']
     OrderingFilter=['salary','deadline']
-    permission_classes=[IsCandidate]
+    # permission_classes=[IsCandidate]

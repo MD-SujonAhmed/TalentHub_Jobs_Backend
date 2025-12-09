@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from.models import Company,JobType,Job,Category,ExperienceLevel,Skill
+from JobApplication.models import JobApplication
 
 class CompanySerializer(serializers.ModelSerializer):
     
@@ -37,4 +38,10 @@ class SkillSerializer(serializers.ModelSerializer):
     class Meta:
         model=Skill
         fields="__all__"
-        
+    
+
+class applicationUsers(serializers.ModelSerializer): # applicaiton users jono dese 
+    
+    class Meta:
+        model=JobApplication
+        fields="__all__"

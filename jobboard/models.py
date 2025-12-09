@@ -28,7 +28,7 @@ class Job(models.Model):
     job_type=models.ForeignKey(JobType,on_delete=models.CASCADE)
     salary=models.CharField(max_length=10,blank=True,null=True)
     Vacancy=models.CharField(max_length=10,blank=True,null=True)
-    applications_user=models.ForeignKey(JobApplication,on_delete=models.CASCADE,related_name='application_users')
+    applications_user=models.ForeignKey(JobApplication,on_delete=models.CASCADE,related_name='application_users',null=True)
     
     
 class Category(models.Model):

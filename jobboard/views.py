@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
-from .serializers import JobSerializer,CompanySerializer,jobTypeSerializer,CategorySerializer,SkillSerializer,ExperienceLevelSerializer
+from .serializers import JobSerializer,CompanySerializer,jobTypeSerializer,CategorySerializer,SkillSerializer,ExperienceLevelSerializer,applicationUsers
 from.models import Company,JobType,Job,Category,ExperienceLevel,Skill
 from users.permissions import IsRecruiter
+from JobApplication.models import JobApplication
+
 # Create your views here.
 class CompanyViewset(ModelViewSet):
     queryset=Company.objects.all()
@@ -40,3 +42,11 @@ class SkillViewset(ModelViewSet):
    #  permission_classes=[IsRecruiter]
     
 
+class Application_usersViewset(ModelViewSet): # ae holo amier applications  user jono ........ ..
+    # queryset=JobApplication.objects.all()
+    serializer_class=applicationUsers
+    
+    def get_queryset(self):
+        job_id=self.kwargs.get('job_pk')
+        return JobApplication.objects.filter(job_id=job_id)
+    
